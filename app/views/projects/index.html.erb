@@ -1,0 +1,83 @@
+<%- @projects.each do |project| %>
+	<div class="project">
+		<div class="project_header">
+
+			
+			<span class="fa fa-list"></span>
+			<%= project.name  %>
+			<div class="pull-right">
+				<%= link_to content_tag('span', '', class: 'fa fa-pencil'), edit_project_path(project), class: 'action' %>
+ 				<%= link_to content_tag('span', '', class: 'fa fa-trash'), project, method: :delete, class: 'action' %>
+
+			</div>
+		</div>
+
+		<div class="project_new">
+			<div class="row">
+				<div class="col-xs-1">
+				</div>
+				<div class="col-xs-11">
+					<%=form_for Task.new do |f|%>
+					  <div class="input-group">
+				      <%= f.text_field :title, class: "form-control", placeholder: "Start typing here to create a task..."%>
+				      <%= f.hidden_field :project_id, value: project.id%>
+				      <span class="input-group-btn">
+				      <%=f.submit 'create', class: 'btn btn-default'%>
+				      </span>
+				      
+				     <%- end %> 
+				    </div>
+				</div>
+			</div>
+
+   
+
+
+		</div>
+
+		<div class="project_tasks">
+			<%- project.tasks.each do |task| %>
+
+			
+
+				<div>
+					<div class="task_border">
+						<div class="row">
+							<div class="col-xs-1 col-sm-1	col-md-1 col-lg-1 padding-top-10 padding-bottom-10 checkbox_wrap">	
+
+
+								
+								 	<input type="checkbox" name="id" >
+
+
+							</div>
+
+							<div class="col-xs-9 col-sm-9	col-md-9 col-lg-9 padding-top-10 padding-bottom-10 content_wrap">
+
+								
+							<%= task.title %>			
+									
+							</div>
+
+							<div class="col-xs-2 col-sm-2	col-md-2 col-lg-2 padding-top-10 padding-bottom-10 ctrl_wrap">
+								<div class="btn_link">
+							<%= link_to content_tag('span', '', class: 'fa fa-pencil'), edit_task_path(task), class: 'action' %>
+								</div>
+								<div class="btn_link">
+							<%= link_to content_tag('span', '', class: 'fa fa-trash'), task, method: :delete, class: 'action' %>
+								</div>
+
+							</div>
+
+					</div>
+						</div>
+
+				</div>
+			<%- end %>
+		</div>
+	
+	</div>
+
+<%- end %>
+
+<%= link_to 'Add project', new_project_path, class: 'btn btn-success ' %>

@@ -1,0 +1,60 @@
+<div class="col-md-12">
+<div class="body">
+
+
+<head>
+	
+
+
+</head>
+<body>
+
+ <h1>Simple ToDo list</h1>
+
+   <div class="panel panel-info">
+ <div class="panel-heading">Complete the test task for Ruby Garage</div>
+ 
+  <div class="row">
+          <div class=" col-md-10 col-sm-10 "></div>
+          <div class="col-md-2 col-sm-2 ">
+            <div class="col lg-6 col-md-6 col-sm-6">
+            <div class="col lg-6 col-md-6 col-sm-6">
+
+          <%= link_to "Add Task", new_task_path, class: 'btn btn-primary' %></div>
+             </div></div>
+        
+ <div class="panel-body">   </div>
+     </div>
+    </div>
+ 
+ <div class="panel panel-info">
+<div class="panel-body">  
+
+<div class="buffer-top">
+ 
+ <% @tasks.each do |task| %>
+   <%= render partial: 'task' , object: task %>
+  <hr/>
+ <% end %>
+  </div>
+
+    </div>
+</div>
+
+   
+    
+
+
+  
+
+ <hr/>
+
+
+<% @completed_tasks.each do |task| %>
+   <%= render partial: 'task' , object: task %>
+ <% end %>
+ 
+ </div>
+</div>
+
+</body>
