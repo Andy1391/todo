@@ -33,7 +33,7 @@
 }
 
 .task_border:hover {
-	background: yellow ;
+	background: #efeea5 ;
 	
 
 }
@@ -89,6 +89,20 @@
 
 .btn_link:last-child {
 	border-right: 0px;
-	}
+}
+
+.add_project_btn {
+	color: #4286f4;
+	text-align: center;
+
+}
+
+.btn-default {
+    
+    background-color: #71c159;
+   
+}
+
+
 
 
