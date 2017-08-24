@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="project_tasks">
-			<%- project.tasks.each do |task| %>
+			<%- project.tasks.each do |task, index| %>
 
 			
 
@@ -44,18 +44,20 @@
 					<div class="task_border">
 						<div class="row">
 							<div class="col-xs-1 col-sm-1	col-md-1 col-lg-1 padding-top-10 padding-bottom-10 checkbox_wrap">	
-
-
 								
-								 	<input type="checkbox" name="id" >
-
-
+								<%- if task.completed %>
+									
+									<input type='checkbox' class='completed_checkbox' data-task-id=<%=task.id%> checked>
+								<%- else%>	
+									<input type='checkbox' class='completed_checkbox' data-task-id=<%=task.id%>>
+								<%end%>			
 							</div>
 
 							<div class="col-xs-9 col-sm-9	col-md-9 col-lg-9 padding-top-10 padding-bottom-10 content_wrap">
 
 								
-							<%= task.title %>			
+						
+							<span data-task-id=<%= task.id %> class=<%= task.completed ? 'task_done' : ''%>><%= task.title %></span>		
 									
 							</div>
 
@@ -82,7 +84,12 @@
 <div class="add_project_btn">
 	
 	
-	<%= link_to 'Add TODO list', new_project_path, class: 'btn btn-success ' %>
-	
+	<%= link_to  new_project_path, class: 'btn btn-primary ' do %>
+		
+		
+
+		<span class="plus_wrap">  <i class="fa fa-plus plus"  aria-hidden="true"></i>    Add TODO list</span>
+
+	<%- end %>			
 
 </div>

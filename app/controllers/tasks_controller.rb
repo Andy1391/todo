@@ -23,10 +23,12 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find params[:id]
-
     @task.update_attributes task_params
 
     redirect_to projects_path
+    # @task.update(completed: params[:completed])
+    # @task.update(completed: true)
+    # head :ok
   end
 
   def complete
