@@ -1,38 +1,36 @@
 <%- @projects.each do |project| %>
 	<div class="project">
-		<div class="project_header">
-
+		<div class="project_header">					
+  
 			
-			<span class="fa fa-list"></span>
+			<span class="fa fa-list-alt fa-1g"></span>
+
 			<%= project.name  %>
 			<div class="pull-right">
 				<%= link_to content_tag('span', '', class: 'fa fa-pencil'), edit_project_path(project), class: 'action' %>
- 				<%= link_to content_tag('span', '', class: 'fa fa-trash'), project, method: :delete, class: 'action' %>
+				<%= link_to content_tag('span', '', class: 'fa fa-trash'), project, method: :delete, class: 'action' %>
 
 			</div>
 		</div>
 
+					
 		<div class="project_new">
 			<div class="row">
 				<div class="col-xs-1">
 				</div>
-				<div class="col-xs-11">
-					<%=form_for Task.new do |f|%>
-					  <div class="input-group">
-				      <%= f.text_field :title, class: "form-control", placeholder: "Start typing here to create a task..."%>
-				      <%= f.hidden_field :project_id, value: project.id%>
-				      <span class="input-group-btn">
-				      <%=f.submit 'Add task', class: 'btn btn-default'%>
-				      </span>
-				      
-				     <%- end %> 
-				    </div>
-				</div>
+					<div class="col-xs-11">
+						<%=form_for Task.new do |f|%>
+					  	<div class="input-group">
+						      <%= f.text_field :title, class: "form-control", placeholder: "Start typing here to create a task..."%>
+						      <%= f.hidden_field :project_id, value: project.id%>
+						      <span class="input-group-btn">
+						      <%=f.submit 'Add task', class: 'btn btn-default'%>
+						      </span>
+					      
+					     <%- end %> 
+					    </div>
+					</div>
 			</div>
-
-   
-
-
 		</div>
 
 		<div class="project_tasks">
@@ -81,6 +79,9 @@
 	</div>
 
 <%- end %>
+
+				
+
 <div class="add_project_btn">
 	
 	

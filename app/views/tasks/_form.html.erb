@@ -1,6 +1,22 @@
-<div class="col-md-6">
 <%= simple_form_for @task do |f| %>
-<p><%= f.input :title %></p>
-<p><%= f.button :submit %></p>
+
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+	<h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	<div class="field">
+    
+		<p><%= f.input :title %></p>
+	  	<p><%= f.button :submit %></p>
+
+
+	</div>
 <% end %>
-</div>

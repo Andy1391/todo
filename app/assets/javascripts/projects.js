@@ -6,24 +6,22 @@ $(document).on('turbolinks:load', function() {
 
 		if($(this).is(':checked')) {
 			$('span[data-task-id="' + task_id + '"]').css('text-decoration', 'line-through');
-		} else {
+		} 
+		else {
 			$('span[data-task-id="' + task_id + '"]').css('text-decoration', 'none');
 		}
 
 		$.ajax({
-		  type: "POST",
-		  url: 'tasks/' + task_id,
+		  type: "PUT",
+		  url: '/tasks/'+ task_id,
 		  data: {
 		  	'_method':'put',
-		  	'task[:completed]': $(this).is(':checked')
+		   	'task[completed]': $(this).is(':checked')
 		  },
 		  success: function(data) {
 		  	console.log('ssss');
 		  }
 		});		
-
-
-		
 
 	})
 

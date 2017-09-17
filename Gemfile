@@ -26,7 +26,7 @@ gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
 gem 'turbolinks'
-
+gem "dynamic_form"
 
 gem 'jbuilder', '~> 1.2'
 
