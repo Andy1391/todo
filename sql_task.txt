@@ -1,0 +1,39 @@
+1. Task.select('status').order(:status).uniq
+
+SELECT DISTINCT "tasks".status FROM "tasks" ORDER BY "tasks".status ASC
+
+2.Project.joins(:tasks).group('projects.id').order('count_all desc').count
+
+SELECT COUNT(*) AS count_all, projects.id AS projects_id FROM "projects" INNER JOIN "tasks" ON "tasks"."project_id" = "projects"."id" GROUP BY projects.id ORDER BY count_all desc
+
+3.Project.joins(:tasks).group('projects.id').order('name').count
+
+SELECT COUNT(*) AS count_all, projects.id AS projects_id FROM "projects" INNER JOIN "tasks" ON "tasks"."project_id" = "projects"."id" GROUP BY projects.id ORDER BY name
+
+4  Task.where('title like "N%"')
+
+SELECT "tasks".* FROM "tasks" WHERE (title like "N%")
+
+5. Project.joins("LEFT OUTER JOIN tasks").where('name like "%a%"').group('projects.id').count
+
+SELECT COUNT(*) AS count_all, projects.id AS projects_id FROM "projects" LEFT OUTER JOIN tasks WHERE (name like "%a%") GROUP BY projects.id
+
+6. Task.group(:title).having('count_all>1').order(:title).count
+
+SELECT COUNT(*) AS count_all, title AS title FROM "tasks" GROUP BY title HAVING count_all>1 ORDER BY "tasks".title ASC
+
+7.Project.joins(:tasks).where('projects.name="Garage" and tasks.title like "k%" and tasks.status="completed"').group('tasks.id').order('count_all').count
+
+SELECT COUNT(*) AS count_all, tasks.id AS tasks_id FROM "projects" INNER JOIN "tasks" ON "tasks"."project_id" = "projects"."id" WHERE (projects.name="Garage" and tasks.title like "k%" and tasks.status="completed") GROUP BY tasks.id ORDER BY count_all
+
+8.Project.joins(:tasks).where(status: 'completed').group('projects.id').having('count_all>10').order(:project_id).count
+
+SELECT COUNT(*) AS count_all, projects.id AS projects_id FROM "projects" INNER JOIN "tasks" ON "tasks"."project_id" = "projects"."id" WHERE "projects"."status" = 'completed' GROUP BY projects.id HAVING count_all>10 ORDER BY "projects".project_id ASC
+
+
+
+
+
+
+
+

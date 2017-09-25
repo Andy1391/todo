@@ -1,13 +1,6 @@
-<%= simple_form_for @project do |f| %>
-
-	<% if @project.errors.any? %>
-		<h2>Errors:</h2>
-		<ul>
-		<% @project.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		<% end %>
-		</ul>
-		<% end %>
+<%= simple_form_for @project  do |f| %>
+	<%= f.error_messages %>
+	
 	
 
 	<p><%= f.label :name %></p>
